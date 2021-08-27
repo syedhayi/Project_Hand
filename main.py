@@ -14,7 +14,8 @@ port = 8888
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((host, port))
     width, height = 640, 480
-    cap = cv2.VideoCapture(1)  ## 640 x 480 resolution
+    cap = cv2.VideoCapture(1) 
+    ## 640 x 480 resolution
     cap.set(3, width)
     cap.set(4, height)
     pTime = 0  # previous time
