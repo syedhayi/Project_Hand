@@ -32,21 +32,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         if len(label) != 0:
             if len(lmList) != 0:
                 coord_ = lmList[0][1], lmList[0][2]
-                if label[0] == 'Left':
-                    # print(lmList[4])
-                    x1, y1 = lmList[4][1], lmList[4][2]
-                    x2, y2 = lmList[8][1], lmList[8][2]
-
-                    cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
-                    cv2.circle(img, (x1, y1), 5, (255, 0, 0), cv2.FILLED)
-                    cv2.circle(img, (x2, y2), 5, (255, 0, 0), cv2.FILLED)
-                    # image = cv2.line(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
-                    length = math.hypot(x2 - x1, y2 - y1)
-
-                    if length < 25:
-                        cv2.circle(img, (cx, cy), 5, (0, 0, 0), cv2.FILLED)
-                    else:
-                        pwm = int(remap(length, 25, 210, 0, 255))
+                if label[0] == 'Left':                    
                     cv2.putText(img, label[0], coord_, cv2.FONT_HERSHEY_SIMPLEX,
                                 0.5, (255, 0, 0), 2)
                     joint_ = [[4,3,2], [7,6,5], [11, 10, 9],  [15, 14, 13],  [19, 18, 17]]      ## joint list of the angle wanted to calculate ## [A ,B, C] -> to get angle of line AB and BC
